@@ -1,0 +1,185 @@
+@CHARSET "ISO-8859-1";
+
+@import "compass/css3";
+
+@mixin input-placeholder {
+		&.placeholder { @content; }
+		&:-moz-placeholder { @content; }
+		&::-moz-placeholder { @content; }
+		&:-ms-input-placeholder { @content; }
+		&::-webkit-input-placeholder { @content; } 
+}
+
+@function pow($number, $exp) {
+  $value: 1;
+  @if $exp > 0 {
+    @for $i from 1 through $exp {
+      $value: $value * $number;
+    }
+  }
+  @else if $exp < 0 {
+    @for $i from 1 through -$exp {
+      $value: $value / $number;
+    }
+  }
+  @return $value;
+}
+
+@function fact($number) {
+  $value: 1;
+  @if $number > 0 {
+    @for $i from 1 through $number {
+      $value: $value * $i;
+    }
+  }
+  @return $value;
+}
+
+@function pi() {
+  @return 3.14159265359;
+}
+
+@function rad($angle) {
+  $unit: unit($angle);
+  $unitless: $angle / ($angle * 0 + 1);
+  // If the angle has 'deg' as unit, convert to radians.
+  @if $unit == deg {
+    $unitless: $unitless / 180 * pi();
+  }
+  @return $unitless;
+}
+
+@function sin($angle) {
+  $sin: 0;
+  $angle: rad($angle);
+  // Iterate a bunch of times.
+  @for $i from 0 through 10 {
+    $sin: $sin + pow(-1, $i) * pow($angle, (2 * $i + 1)) / fact(2 * $i + 1);
+  }
+  @return $sin;
+}
+
+@function cos($angle) {
+  $cos: 0;
+  $angle: rad($angle);
+  // Iterate a bunch of times.
+  @for $i from 0 through 10 {
+    $cos: $cos + pow(-1, $i) * pow($angle, 2 * $i) / fact(2 * $i);
+  }
+  @return $cos;
+}
+
+$green: #3c5346;
+$red: #872633;
+$yellow: #dfb655;
+$black: #272328;
+$purple: #2a1f26;
+$white: #f9f9f9;
+$blue: #66B9E3; 
+$charcoal: #323232;
+
+$slant-line-angle:30deg;
+$slant-line-length:300px;
+$slant-line-height:(cos($slant-line-angle)) * $slant-line-length;
+$slant-line-width:(sin($slant-line-angle)) * $slant-line-length;
+
+
+
+$b1-width:200px; 
+$b1-height:65px;
+$b1-shrink-scalar:.13;
+$b1-line-weight: 2px;
+$b1-std-line-length: 20px;
+$b1-hover-line-length:$b1-std-line-length * (1 - $b1-shrink-scalar * 2);
+$b1-hover-horizontal-offset:$b1-shrink-scalar * $b1-width;
+$b1-hover-vertical-offset:$b1-shrink-scalar * $b1-height;
+$b1-line-color:rgba(80,80,80,.9);
+$b1-hover-transition-duration: .2s;
+
+$b2-width:200px;
+$b2-height:65px;
+$b2-line-color:rgba(80,80,80,.9);
+$b2-line-weight:2px;
+$b2-std-side-length-scalar:.66;
+$b2-hover-side-length-scalar:.33;
+$b2-std-vertical-length:$b2-height * $b2-std-side-length-scalar;
+$b2-std-horizontal-length:0px;
+$b2-std-vertical-offset:($b2-height - $b2-std-vertical-length) / 2;
+$b2-std-horizontal-offset:0px;//($b2-width - $b2-std-horizontal-length) / 2;
+$b2-hover-vertical-length:$b2-height * $b2-hover-side-length-scalar;
+$b2-hover-horizontal-length:$b2-width * $b2-hover-side-length-scalar;
+$b2-hover-transition-duration: .2s;
+
+$default-text-shadow-color: rgba(70,70,70,.5);
+$default-text-shadow-blur: 6px; 
+$default-text-shadow-v-offset: 2px;
+$default-text-shadow-h-offset: 2px;
+
+$OpenSans: "OpenSans", "OpenSans_IE";
+$OpenSansLt: "OpenSansLt", "OpenSansLt_IE";
+
+@import "compass/css3";
+
+
+html, body {
+	width:100%;
+	padding:0;
+	margin:0;
+}
+
+body {
+	font-family:$OpenSansLt;
+}
+
+div, button{
+	padding:0;
+	margin:0;
+	border:0px;
+	
+}
+
+.section {
+		
+}
+
+p {
+	margin:0;
+	padding:0;
+}
+
+h1, h2, h3, h4 {
+	font-family:$OpenSansLt;
+	font-size:16px;
+	font-weight:400;
+	margin:0;
+	padding:0;
+}
+
+h2 {
+	font-size:1.35rem;
+	font-family:'.HelveticaNeueDeskInterface-Regular';
+	font-weight:200;
+}
+
+.twoCol {
+	width:calc(50% - 50px);
+	dispaly:inline-block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="">
+	<!-- Windows doesn't properly execute anything but .exe files, the .bat version needs to be explicit with complete path -->
+	<condition property="sass_exec_file" value="C:\\Ruby200-x64\\bin\\sass.bat" else="sass" >
+		<os family="windows" />
+	</condition>
+	<condition property="compass_exec_file" value="C:\\Ruby200-x64\\bin\\compass.bat" else="compass" >
+		<os family="windows" />
+	</condition>
+	
+	<!-- Compile .scss and .sass files in the public/sass directory using SASS -->
+	<target name="sass.compile">
+		<property name="sass.dir" value="sass" />
+		<property name="css.dir" value="css" />
+	
+		<apply executable="${sass_exec_file}" dest="${css.dir}" verbose="true" force="true" failonerror="true">
+			<arg value="--unix-newline" />
+			<arg value="--compass" />
+			<srcfile />
+			<targetfile />
+			<fileset dir="${sass.dir}" includes="**/*.scss,**/*.sass" excludes="**/_*" />
+			<firstmatchmapper>
+				<globmapper from="*.sass" to="*.css" />
+				<globmapper from="*.scss" to="*.css" />
+			</firstmatchmapper>
+		</apply>
+		<eclipse.refreshLocal resource="xa/public" depth="infinite"/>
+	</target>
+	
+	<!-- Compile .scss files in the sass directory using Compass -->
+	<target name="compass.compile">
+		<exec executable="${compass_exec_file}" dir="${basedir}">
+			<arg value="compile" />
+		</exec>
+		<eclipse.refreshLocal resource="xa/public" depth="infinite"/>
+	</target>
+</project>

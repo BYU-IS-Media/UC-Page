@@ -1,0 +1,62 @@
+@CHARSET "ISO-8859-1";
+
+/* line 130, ../sass/main.scss */
+html, body {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* line 136, ../sass/main.scss */
+body {
+  font-family: "OpenSansLt", "OpenSansLt_IE";
+}
+
+/* line 140, ../sass/main.scss */
+div, button {
+  padding: 0;
+  margin: 0;
+  border: 0px;
+}
+
+/* line 151, ../sass/main.scss */
+p {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 156, ../sass/main.scss */
+h1, h2, h3, h4 {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 164, ../sass/main.scss */
+h2 {
+  font-size: 1.35rem;
+  font-family: '.HelveticaNeueDeskInterface-Regular';
+  font-weight: 200;
+}
+
+.twoCol {
+	width:calc(50% - 65px);
+	margin-right:15px;
+	display:inline-block;
+	vertical-align:top;
+}
+
+#courseContainer {
+	-webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+}
+
+#courseContainer span {
+}
+
+
+
+
+
