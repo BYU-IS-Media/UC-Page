@@ -51,10 +51,33 @@ h2 {
 	-webkit-column-count: 2; /* Chrome, Safari, Opera */
     -moz-column-count: 2; /* Firefox */
     column-count: 2;
+    line-height:1.4rem;
+    letter-spacing:.2px;
+    max-width:830px;
 }
 
-#courseContainer span {
+#courseList {
+	overflow:visible;
+    width:830px;
+    list-style-type:none;
+    margin-left:0;
 }
+
+#courseList li {
+	width:500px;
+}
+
+#courseList li a {
+	color:#666;
+}
+
+#courseList a .course-number {
+	color:#999;
+	display:inline-block;
+	min-width:75px;
+}
+
+
 
 
 

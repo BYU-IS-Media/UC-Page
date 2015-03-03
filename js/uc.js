@@ -45,12 +45,12 @@ $.ajax({
 			courseItem = document.createElement("span"),
 			courseDataPieces = (/^([^\:]+)\:(.+?)(\([\w\s]+\))?$/i).exec(ucCourses[course]['university-title']),
 			shortTitle = courseDataPieces[1],
-			textTitle = courseDataPieces[2]
+			textTitle = courseDataPieces[2] + " "
 		;
 		
 		displayA.attr("href", anchorHref);
+		displayA.append($('<span class="course-number"></span>').append(shortTitle));
 		displayA.append($('<span class="course-name"></span>').append(textTitle));
-		displayA.append($('<span class="course-numer"></span>').append(shortTitle));
 		displayNode.append(displayA);
 		//courseItem.innerHTML = displayNode;
 		$("#courseList").append(displayNode);
