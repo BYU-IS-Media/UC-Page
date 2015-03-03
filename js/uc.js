@@ -43,9 +43,10 @@ $.ajax({
 			displayA = $("<a></a>"),
 			anchorHref = ("http://is.byu.edu/site/courses/description.cfm?title=" + ucCourses[course]['short-title']),
 			courseItem = document.createElement("span"),
-			courseDataPieces = (/^([^\:]+)\:(.+?)(\([\w\s]+\))?$/i).exec(ucCourses[course]['university-title']),
-			shortTitle = courseDataPieces[1],
-			textTitle = courseDataPieces[2] + " "
+			shortTitleMatches = (/([\w\s]{3,}[ \t-]\d{3,})/i).exec(ucCourses[course]['university-title']),
+			shortTitle = (shortTitleMatches)?shortTitleMatches[1]:"Unknown",
+			textTitleMatches = (/([\w\s]{3,}[ \t-]\d{3,})?\s*(^|\:)\s*(.+?)(\([\w\s]+\))?($|\:\s*([\w\s]{3,}[ \t-]\d{3,})?)/i).exec(ucCourses[course]['university-title']),
+			textTitle = (textTitleMatches)?textTitleMatches[3] + " ":"Unknown"
 		;
 		
 		displayA.attr("href", anchorHref);
