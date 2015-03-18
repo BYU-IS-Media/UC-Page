@@ -51,7 +51,7 @@ $.ajax({
 		
 		displayA.attr("href", anchorHref);
 		displayA.append($('<span class="course-number"></span>').append(shortTitle));
-		displayA.append($('<span class="course-name"></span>').append(textTitle));
+		displayA.append($('<span class="course-name"></span>').append(textTitle+" (TL)"));
 		displayNode.append(displayA);
 		//courseItem.innerHTML = displayNode;
 		$("#courseList").append(displayNode);
