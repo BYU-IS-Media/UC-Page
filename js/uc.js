@@ -36,7 +36,7 @@ $.ajax({
 			}
 		}
 	}
-	console.log(ucCourses);
+	//console.log(ucCourses);
 	ucCourses.sort(sort_by('short-title', false, function(a){return a.toUpperCase()})); //sorting the array abc order, case sensitive
 	for (var course in ucCourses) {
 		var displayNode = $("<li></li>"),
